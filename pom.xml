@@ -16,7 +16,7 @@
 
 	<properties>
 		
-		<java.runtime.version>11</java.runtime.version>
+		<java.version>11</java.version>
 		
 		<jjwt.version>0.10.6</jjwt.version>		
 	</properties>
