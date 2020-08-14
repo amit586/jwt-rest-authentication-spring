@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+<title>Auth REST API</title>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link href="css/style.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+</head>
+<body>
+	<nav class="light-blue lighten-1" role="navigation">
+		<div class="nav-wrapper container">
+			<a id="logo-container" href="#" class="brand-logo">Auth 1.0</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a
+					href="https://github.com/amit586/jwt-rest-authentication-spring">Github</a></li>
+			</ul>
+
+			<ul id="nav-mobile" class="sidenav">
+				<li><a
+					href="https://github.com/amit586/jwt-rest-authentication-spring">Github</a></li>
+			</ul>
+			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i
+				class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br> <br>
+			<h1 class="header center orange-text">Auth REST API</h1>
+			<div class="row center">
+				<h5 class="header col s12 light">RESTful API for Login / Sign
+					Up in Spring boot Using JWT</h5>
+			</div>
+			<div class="row center">
+				<a href="https://github.com/amit586/jwt-rest-authentication-spring"
+					id="download-button"
+					class="btn-large waves-effect waves-light orange">Source Code</a>
+			</div>
+			<br> <br>
+
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="section">
+
+			<!--   Icon Section   -->
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text">
+							<i class="material-icons">flash_on</i>
+						</h2>
+						<h5 class="center">What is JWT?</h5>
+
+						<p class="light">JSON Web Token (JWT) is an open standard (RFC
+							7519) that defines a compact and self-contained way for securely
+							transmitting information between parties as a JSON object. This
+							information can be verified and trusted because it is digitally
+							signed.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text">
+							<i class="material-icons">eco</i>
+						</h2>
+						<h5 class="center">Spring Boot</h5>
+
+						<p class="light">Spring Boot is an open-source Java framework
+							that was developed by Pivotal in 2014 and simplifies the task of
+							deploying Java enterprise web applications. It is a project built
+							on top of the Spring framework that provides an efficient way to
+							set up and run applications.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center light-blue-text">
+							<i class="material-icons">settings</i>
+						</h2>
+						<h5 class="center">Features</h5>
+						<p class="light">Expose endpoints for login(with remember Me),
+							Sign Up. Support for Forgot Password, Validate Account using
+							E-mail Service. GET/PUT/DELETE mapping for managing Account of
+							the logged-in user. Restrict endpoints based on user ROLE i.e
+							ADMIN, MODERATOR, USER.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br> <br>
+			<h1 class="header center light-blue-text">Endpoints</h1>
+			<div class="row">
+				<div class="col s6 m3">
+					<div class="icon-block">
+						<h2 class="center green-text">
+							<i class="material-icons">get_app</i>
+						</h2>
+						<h5 class="center">GET</h5>
+					</div>
+				</div>
+				<div class="col s6 m3">
+					<div class="icon-block">
+						<h2 class="center light-blue-text">
+							<i class="material-icons">email</i>
+						</h2>
+						<h5 class="center">POST</h5>
+					</div>
+				</div>
+				<div class="col s6 m3">
+					<div class="icon-block">
+						<h2 class="center orange-text darken-4">
+							<i class="material-icons">input</i>
+						</h2>
+						<h5 class="center">PUT</h5>
+					</div>
+				</div>
+
+				<div class="col s6 m3">
+					<div class="icon-block">
+						<h2 class="center red-text accent-4">
+							<i class="material-icons">delete</i>
+						</h2>
+						<h5 class="center">DELETE</h5>
+					</div>
+				</div>
+			</div>
+			<div class="row center">
+				<h5 class="header col s12 light">Access to all Users</h5>
+			</div>
+			<ul class="collapsible">
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons light-blue-text">email</i>/api/auth/signup
+					</div>
+					<div class="collapsible-body">
+						<div>If roles are not provided,Default role is ROLE_USER.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/signup.png">
+							</span> <br>Roles can be provided as shown in below example <br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/signup2.png">
+							</span>
+
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons light-blue-text">email</i>/api/auth/activate
+					</div>
+					<div class="collapsible-body">
+						<div>This endpoint can regenerate verification email if previous link expires.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/activate.png">
+							</span> 
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons green-text">get_app</i>/api/auth/activate
+					</div>
+					<div class="collapsible-body">
+						<div>A GET method embedded in activation link to activate account.
+							<br> Just click on the activate button sent to your email.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/example-email.png">
+							</span> 
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons light-blue-text">email</i>/api/auth/login
+					</div>
+					<div class="collapsible-body">
+						<div>POST Method to log in and get JWT token if credentials are valid.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/login.png">
+							</span>
+							<br>
+							In case of invalid credentials.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/login-fail.png">
+							</span> 
+							If Account is not activated after Sign up.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/login-disabled.png">
+							</span>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons light-blue-text">email</i>/api/auth/reset-password
+					</div>
+					<div class="collapsible-body">
+						<div>POST Method to reset password. The OTP is sent in user email.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/password-reset-valid.png">
+							</span>
+							<br>
+							In case of invalid OTP.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/reset-password-invalid.png">
+							</span> 
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons green-text">get_app</i>/api/auth/reset-password
+					</div>
+					<div class="collapsible-body">
+						<div>GET method to send reset password request. OTP is sent to email.
+							<br>
+							<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/reset-password.png">
+							</span> 
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<br>
+			<div class="row center">
+				<h5 class="header col s12 light">Access to Logged In user (user
+					with jwt token in authentication header)</h5>
+			</div>
+			<ul class="collapsible">
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons green-text">get_app</i>/api/user
+					</div>
+					<div class="collapsible-body">
+						<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/user-get.png">
+						</span> 
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons orange-text darken-4">input</i>/api/user
+					</div>
+					<div class="collapsible-body">
+						<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/user-put.png">
+						</span> 
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons red-text accent-4">delete</i>/api/user
+					</div>
+					<div class="collapsible-body">
+						<span class="materialboxed">
+								<img class="responsive-img" alt="signup image"
+									src="images/user-delete.png">
+						</span> 
+					</div>
+				</li>
+			</ul>
+
+			<br>
+			<div class="row center">
+				<h5 class="header col s12 light">ROLE based protected endpoints
+					for Logged In users</h5>
+			</div>
+			<ul class="collapsible">
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons green-text">get_app</i>/api/person
+					</div>
+					<div class="collapsible-body">
+						<span>Access to user having role ROLE_USER</span>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons green-text">get_app</i>/api/moderator
+					</div>
+					<div class="collapsible-body">
+						<span>Access to user having role ROLE_MODERATOR</span>
+					</div>
+				</li>
+				<li>
+					<div class="collapsible-header">
+						<i class="material-icons green-text">get_app</i>/api/hiddenmessage
+					</div>
+					<div class="collapsible-body">
+						<span>Access to user having role ROLE_ADMIN</span>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+	<footer class="page-footer orange">
+		<div class="footer-copyright">
+			<div class="container">
+				Made by <a class="orange-text text-lighten-3"
+					href="https://github.com/amit586/">Amit Kumar</a>
+			</div>
+		</div>
+	</footer>
+
+
+	<!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<script src="js/init.js"></script>
+
+</body>
+</html>

@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**").antMatchers("/", "/*.html", "/favicon.ico", "/**/*.html",
-				"/**/*.css", "/**/*.js");
+				"/**/*.css", "/**/*.js","/**/*.png");
 	}
 
 	// Configure security settings
@@ -60,9 +60,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.exceptionHandling().authenticationEntryPoint(authenticationErrorHandler)
 				.accessDeniedHandler(jwtAccessDeniedHandler).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/api/auth/**").permitAll().antMatchers("/api/person").hasAuthority("ROLE_USER")
-				.antMatchers("/api/hiddenmessage").hasAuthority("ROLE_ADMIN").anyRequest().authenticated().and()
-				.apply(securityConfigurerAdapter());
+				.antMatchers("/api/auth/**").permitAll()
+				.antMatchers("/api/person").hasAuthority("ROLE_USER")
+				.antMatchers("/api/moderator").hasAuthority("ROLE_MODERATOR")
+				.antMatchers("/api/hiddenmessage").hasAuthority("ROLE_ADMIN")
+				.anyRequest().authenticated().and().apply(securityConfigurerAdapter());
 	}
 
 	private JWTConfigurer securityConfigurerAdapter() {

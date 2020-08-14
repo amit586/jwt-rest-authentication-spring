@@ -153,25 +153,29 @@ public class AuthenticationRestController {
 		user.setRoles(roles);
 
 		String jwt = tokenProvider.createTemporaryToken(signUpRequest.getEmail(), ACTIVATION);
-		String message = "To confirm your account, please click here : " + domain + "/api/auth/activate?token=" + jwt;
+		String message = "To confirm your account, please click here : ";
+		String link =  domain + "/api/auth/activate?token=" + jwt;
 
-		emailSenderService.sendEmail(signUpRequest.getEmail(), "Please verify your account", message);
+		String result = emailSenderService.sendEmail(signUpRequest.getEmail(), "Please verify your account", message,link);
 
 		userDetailsService.save(user);
-
-		return ResponseEntity
-				.ok(new MessageResponse("Validation is required!, The verification link will be valid for 1 hour"));
+		if(result.equals("success"))
+			return ResponseEntity.ok(new MessageResponse("Validation is required!, The verification link will be valid for 1 hour"));
+		else
+			return ResponseEntity.badRequest().body(new MessageResponse("An error occured"));
 	}
 
 	@PostMapping("/activate")
 	public ResponseEntity<?> sentTokenForActivation(@Valid @RequestBody ActivationRequest activationRequest) {
 
 		String jwt = tokenProvider.createTemporaryToken(activationRequest.getEmail(), ACTIVATION);
-		String message = "To confirm your account, please click here : " + domain + "/api/auth/activate?token=" + jwt;
-
-		emailSenderService.sendEmail(activationRequest.getEmail(), "Please verify your account", message);
-
-		return ResponseEntity.ok(new MessageResponse("Verification Link sent to your Email"));
+		String message = "To confirm your account, please click here : " ;
+		String link =  domain + "/api/auth/activate?token=" + jwt;
+		String result = emailSenderService.sendEmail(activationRequest.getEmail(), "Please verify your account", message,link);
+		if(result.equals("success"))
+			return ResponseEntity.ok(new MessageResponse("Verification Link sent to your Email"));
+		else
+			return ResponseEntity.badRequest().body(new MessageResponse("An error occured"));
 	}
 
 	@GetMapping("/activate")
@@ -198,8 +202,11 @@ public class AuthenticationRestController {
 		String otp = otpProvider.generateOTP();
 
 		forgetPasswordService.saveOTP(email, otp);
-		emailSenderService.sendEmail(email, "OTP for resetting password", otp);
-		return ResponseEntity.ok(new MessageResponse("OTP Sent To Your Email, Expires in 10 minutes"));
+		String result = emailSenderService.sendEmail(email, "OTP for resetting password","OTP for resetting password", otp);
+		if(result.equals("success"))
+			return ResponseEntity.ok(new MessageResponse("OTP Sent To Your Email, Expires in 10 minutes"));
+		else
+			return ResponseEntity.badRequest().body(new MessageResponse("An error occured"));
 	}
 
 	@PostMapping("/reset-password")
