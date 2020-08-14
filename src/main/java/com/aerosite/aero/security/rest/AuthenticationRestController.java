@@ -169,9 +169,9 @@ public class AuthenticationRestController {
 	public ResponseEntity<?> sentTokenForActivation(@Valid @RequestBody ActivationRequest activationRequest) {
 
 		String jwt = tokenProvider.createTemporaryToken(activationRequest.getEmail(), ACTIVATION);
-		String message = "To confirm your account, please click here : " ;
+		String message = "To activate your account, please click here : " ;
 		String link =  domain + "/api/auth/activate?token=" + jwt;
-		String result = emailSenderService.sendEmail(activationRequest.getEmail(), "Please verify your account", message,link);
+		String result = emailSenderService.sendEmail(activationRequest.getEmail(), "Please activate your account", message,link);
 		if(result.equals("success"))
 			return ResponseEntity.ok(new MessageResponse("Verification Link sent to your Email"));
 		else
@@ -189,7 +189,7 @@ public class AuthenticationRestController {
 		String use = claim.get(USECASE).toString();
 
 		if (userDetailsService.existsByEmail(email) == false || use.equals(ACTIVATION) == false) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: Register to verify your account"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Register to activate your account"));
 		}
 
 		userDetailsService.activateUser(true, email);

@@ -241,7 +241,7 @@ public class EmailSenderService {
 				"						\n" + 
 				"						<h3>Aero mail</h3>\n" + 
 				"						<p class=\"lead\">This is a system generated email. Do not reply</p>\n" + 
-				"						<p><img src=\"https://raw.githubusercontent.com/amit586/aero-site/gh-pages/assets/backgrounds/background1.jpg\" style=\"width: 600px\" /></p>\n" + 
+				"						<p><img src=\"https://raw.githubusercontent.com/amit586/jwt-rest-authentication-spring/master/src/main/resources/static/images/background1.jpg\" style=\"width: 600px\" /></p>\n" + 
 				"						<p class=\"callout\">\n" + 
 											message1+" :  "+ message2 + 
 				"						</p>\n" + 
