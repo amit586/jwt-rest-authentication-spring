@@ -64,6 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/person").hasAuthority("ROLE_USER")
 				.antMatchers("/api/moderator").hasAuthority("ROLE_MODERATOR")
 				.antMatchers("/api/hiddenmessage").hasAuthority("ROLE_ADMIN")
+				.antMatchers("/api/dolby/**").hasAuthority("ROLE_USER")
 				.anyRequest().authenticated().and().apply(securityConfigurerAdapter());
 	}
 
